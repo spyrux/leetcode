@@ -1,41 +1,28 @@
 class Solution {
-    public int largestRectangleArea(int[] heights) {
-        // if it is smaller then add to the stack and the rectangle is top of stack * szie of stack
-        // add to stack if it is bigger from the left 
-        // stack if rect at curr greater than the built rectangle restart the stack with curr 
-        // add to stack if built with index >= prevbuilt
-        // keep track of max rectangle at each index subsequent rectangles are made with adding the min of curr and top of stack to the prev
-        
-        Stack<int[]> minHeight = new Stack<>();
-        int[] first = {0, heights[0]};
-        int greatest = heights[0];
-        minHeight.push(first);
-        for(int i = 1; i < heights.length; i++){
-            // 0,2
-            int start = i;
-            while(!minHeight.isEmpty() && minHeight.peek()[1] > heights[i]){
-                int[] popped = minHeight.pop();
-                int area = (i - popped[0])*popped[1];
-                greatest = Math.max(greatest,area);
-                start = popped[0];
-            }
-            
-            int[] curr = {start, heights[i]};
-            minHeight.push(curr);
-            
-        }
-        
-        while(!minHeight.isEmpty()){
-            int[] popped = minHeight.pop();
-            int area = ((heights.length) - popped[0])*popped[1];
-            System.out.println(area);
-            greatest = Math.max(greatest,area);
-        }
-        
-        
-        return greatest;
-        
+    public int largestRectangleArea(int[] h) {
+  int n = h.length, i = 0, max = 0;
+    
+  Stack<Integer> s = new Stack<>();
+    
+  while (i < n) {
+    // as long as the current bar is shorter than the last one in the stack
+    // we keep popping out the stack and calculate the area based on
+    // the popped bar
+    while (!s.isEmpty() && h[i] < h[s.peek()]) {
+      // tricky part is how to handle the index of the left bound
+      max = Math.max(max, h[s.pop()] * (i - (s.isEmpty() ? 0 : s.peek() + 1)));
     }
+    // put current bar's index to the stack
+    s.push(i++);
+  }
+    
+  // finally pop out any bar left in the stack and calculate the area based on it
+  while (!s.isEmpty()) {
+    max = Math.max(max, h[s.pop()] * (n - (s.isEmpty() ? 0 : s.peek() + 1)));
+  }
+    
+  return max;
+}
     
     
 }
