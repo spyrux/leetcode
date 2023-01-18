@@ -6,16 +6,18 @@ class Solution {
             }
         }
         int left = 0;
-        int right = 1;
+        int right = 0;
         int sum = 0;
         int curr = Integer.MAX_VALUE;
-        for(int i = 0; i < nums.length;i++){
-            sum += nums[i];
+        while(right < nums.length){
+            sum += nums[right];
+            
             while(sum >= target){
-                curr = Math.min(curr, i - left + 1);
+                curr = Math.min(curr, right - left + 1);
                 sum -= nums[left];
                 left++;
             }
+            right++;
         }
         if(curr!=Integer.MAX_VALUE ){return curr;}else{return 0;}
         
