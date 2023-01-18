@@ -18,10 +18,10 @@ class Solution {
             if(nums[mid] == target){
                 return mid;
 
-            }else if(nums[mid] > target){
+            }if(nums[mid] > target){
                 high = mid -1;
                 
-            }else if(nums[mid] < target){
+            }if(nums[mid] < target){
             
                low = mid+1;
                 
