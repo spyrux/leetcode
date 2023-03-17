@@ -3,8 +3,10 @@ class Solution {
         
         int left = 0;
         int right = nums.length - 1;
-        
-        while(left < right){
+        if(nums.length == 1){
+            return nums[0]==target? 0:-1;
+        }
+        while(left <= right){
             int mid = left + (right-left)/2;
             
             if(target == nums[mid]){
@@ -35,6 +37,6 @@ class Solution {
         
         
         
-        return nums[left] == target? left:-1;
+        return -1;
     }
 }
