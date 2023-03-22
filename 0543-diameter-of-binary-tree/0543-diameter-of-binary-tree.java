@@ -24,7 +24,7 @@ class Solution {
         int[] maxDepth = new int[1];
         maxDepth[0] = 0; 
         
-        int x = dfs(root,maxDepth);
+        dfs(root,maxDepth);
     
         return maxDepth[0];
     }
