@@ -35,7 +35,7 @@ class Solution {
         int heightL = depth(root.left);
         int heightR = depth(root.right);
         
-        if(heightL - heightR > 1 || heightR - heightL > 1){
+        if(Math.abs(heightL - heightR )> 1){
             result = false; 
         }
         
