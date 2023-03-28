@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode ans = new ListNode();
+        ListNode ans = null;
         ListNode cur = ans;
         
         
@@ -23,8 +23,17 @@ class Solution {
         while(!minHeap.isEmpty()){
             
             ListNode list = minHeap.poll();
-            cur.next = list;
-            cur = cur.next;
+            
+            if(ans == null){
+                ans = list;
+                cur = ans;
+    
+            }else{
+                cur.next = list;
+                cur = cur.next;
+            }
+            
+            
             if(list.next!=null){
                 minHeap.add(list.next);
             }
@@ -33,7 +42,7 @@ class Solution {
             
         }
         
-        return ans.next;
+        return ans;
         
     }
 }
