@@ -15,29 +15,32 @@
  */
 class Solution {
     
-    Queue<Integer> pq = new PriorityQueue<>();
-    
+    int count = 0;
+    int result = Integer.MIN_VALUE;
     public int kthSmallest(TreeNode root, int k) {
         
         
-        dfs(root);
+        dfs(root,k);
+        
+        return result;
         
         
-        while(k > 1){
-            pq.poll();
-            k--;
-        }
-        
-        return pq.poll();
+
         
     }
     
-    public void dfs(TreeNode root){
+    public void dfs(TreeNode root, int k){
         
-        pq.add(root.val);
+        if(root == null) return;
         
-        if(root.left!=null) dfs(root.left);
-        if(root.right!=null) dfs(root.right);
+       
+        
+        dfs(root.left, k);
+        count++;
+        if(count == k) result = root.val;
+        
+        dfs(root.right, k);
+        
         
     }
     
