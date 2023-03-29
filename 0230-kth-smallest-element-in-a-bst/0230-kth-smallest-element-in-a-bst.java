@@ -14,24 +14,14 @@
  * }
  */
 class Solution {
+    
+    Queue<Integer> pq = new PriorityQueue<>();
+    
     public int kthSmallest(TreeNode root, int k) {
         
-        Queue<Integer> pq = new PriorityQueue<>();
-        Queue<TreeNode> q = new LinkedList<>();
         
-        q.offer(root);
+        dfs(root);
         
-        while(!q.isEmpty()){
-            TreeNode top = q.poll();
-            
-            if(top != null){
-                pq.offer(top.val);
-            }
-            
-            if(top.left!=null) q.offer(top.left);
-            if(top.right!=null) q.offer(top.right);
-            
-        }
         
         while(k > 1){
             pq.poll();
@@ -41,4 +31,14 @@ class Solution {
         return pq.poll();
         
     }
+    
+    public void dfs(TreeNode root){
+        
+        pq.add(root.val);
+        
+        if(root.left!=null) dfs(root.left);
+        if(root.right!=null) dfs(root.right);
+        
+    }
+    
 }
