@@ -34,19 +34,20 @@ class Solution {
             int size = q.size();
             
             for(int i = 0; i < size; i++){
-                TreeNode top = q.poll();
                 
-                if(top!= null){
-                    print.add(top.val);
+                
+                if(q.peek()!= null){
+                    print.add(q.peek().val);
                     
-                    if(top.left!= null){
-                        q.offer(top.left);
+                    if(q.peek().left!= null){
+                        q.offer(q.peek().left);
                     }
-                    if(top.right!= null){
-                        q.offer(top.right);
+                    if(q.peek().right!= null){
+                        q.offer(q.peek().right);
                     }
                     
                 }
+                q.poll();
                 
             }
             list.add(print);
