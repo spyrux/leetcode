@@ -17,7 +17,7 @@ class Solution {
         int large = Math.max(q.val, p.val);
         int small = Math.min(q.val, p.val);
         
-        while(root!= null){
+        while(root.left!= null || root.right!= null){
             if(root.val > large){
                 root = root.left;
             }else if(root.val < small){
