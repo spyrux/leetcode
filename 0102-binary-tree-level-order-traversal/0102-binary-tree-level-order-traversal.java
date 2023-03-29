@@ -35,12 +35,10 @@ class Solution {
                 if(top!= null){
                     print.add(top.val);
                     
-                    if(top.left!= null){
-                        q.offer(top.left);
-                    }
-                    if(top.right!= null){
-                        q.offer(top.right);
-                    }
+                    if(top.left!= null)q.offer(top.left);
+                    
+                    if(top.right!= null) q.offer(top.right);
+                    
                     
                 }
                 
