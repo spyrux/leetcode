@@ -35,11 +35,9 @@ class Solution {
         if(node == null){
             return 0;
         }
-        int left = Math.max(dfs(node.left), 0);
-        int right = Math.max(dfs(node.right), 0);
-        
-        
-        int maxPath = Math.max(Math.max(left+node.val,right+node.val),Math.max(left + right + node.val, node.val));
+        int left = Math.max(dfs(node.left),0);
+        int right = Math.max(dfs(node.right),0);
+        int maxPath = Math.max(node.val, Math.max(left + node.val + right ,Math.max(node.val+right,node.val+left)));
         if(maxPath > maxValue){
             maxValue = maxPath;
         }
