@@ -16,11 +16,11 @@ class Solution {
     
     public void dfs(int[] nums, int i, List<Integer> list){
         List<Integer> copy = new ArrayList<>(list);
-
         if(i >= nums.length){
             sets.add(copy);
             return;
         }
+        
         copy.add(nums[i]);
         dfs(nums, i+1, copy);
         copy.remove(copy.size()-1);
@@ -29,3 +29,4 @@ class Solution {
     }
     
 }
+
