@@ -17,7 +17,7 @@ class Solution {
     
     public void dfs(int[] candidates, int i, int target, int currSum, List<Integer> list){
         
-        List<Integer> copy = new ArrayList<>(list);
+        
         
         if(i >= candidates.length){
             return;
@@ -25,6 +25,8 @@ class Solution {
         if(currSum > target){
             return;
         }
+        
+        List<Integer> copy = new ArrayList<>(list);
         
         if(currSum == target){
             combs.add(copy);
