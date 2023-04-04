@@ -1,34 +1,31 @@
 class Solution {
     
-    List<List<Integer>> subset;
+    List<List<Integer>> sets;
     
     public List<List<Integer>> subsets(int[] nums) {
+        sets = new ArrayList<>();
         
-        List<Integer> empty = new ArrayList<>();
-        subset = new ArrayList<>();
+        dfs(nums, 0 , new ArrayList<>());
         
+        return sets; 
         
-        subset.add(empty);
-        
-        if(nums == null){
-            return subset;
-        }
-        
-        for(int i = 0; i < nums.length;i++){
-            List<List<Integer>> add = new ArrayList<>();
-            
-            for(int j = 0; j < subset.size(); j++){
-                List<Integer> next = new ArrayList<>(subset.get(j));
-                next.add(nums[i]);
-                add.add(next);
-                
-                
-            }
-            subset.addAll(add);
-            
-            
-        }
-        
-        return subset;
     }
+    
+    
+    
+    
+    public void dfs(int[] nums, int i, List<Integer> list){
+        List<Integer> copy = new ArrayList<>(list);
+
+        if(i >= nums.length){
+            sets.add(copy);
+            return;
+        }
+        copy.add(nums[i]);
+        dfs(nums, i+1, copy);
+        copy.remove(copy.size()-1);
+        dfs(nums, i+1, copy);
+        
+    }
+    
 }
