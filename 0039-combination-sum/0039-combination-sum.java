@@ -1,14 +1,14 @@
 class Solution {
     
     
-    Set<List<Integer>> combs;
+    List<List<Integer>> combs;
     
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        combs = new HashSet<>();
+        combs = new ArrayList<>();
         
         dfs(candidates, 0, target, 0, new ArrayList<>());
         
-        return new ArrayList<>(combs);
+        return combs;
         
     }
     
@@ -33,7 +33,6 @@ class Solution {
         copy.add(candidates[i]);
         
         dfs(candidates, i, target, currSum+candidates[i], copy);
-        dfs(candidates, i+1, target, currSum+candidates[i], copy);
         
         copy.remove(copy.size()-1);
         dfs(candidates, i+1, target, currSum, copy);
