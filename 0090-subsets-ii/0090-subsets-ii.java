@@ -16,27 +16,20 @@ class Solution {
     
     public void dfs(int[] nums, int i, List<Integer> list){
         
-        List<Integer> copy = new ArrayList<>(list);
+        sets.add(new ArrayList<>(list));
+    
+
         
-        if(i >= nums.length){
+        for(int start = i; start < nums.length;start++){
+            if(start!=i &&nums[start] == nums[start-1]){
+                continue;
+            }
            
-            sets.add(copy);
-          
-            
-            return;
+            list.add(nums[start]);
+            dfs(nums,start+1,list);
+            list.remove(list.size()-1);
         }
-        
-        copy.add(nums[i]);
-        dfs(nums, i+1, copy);
-        copy.remove(copy.size()-1);
-        
-        while(i + 1 < nums.length && nums[i] == nums[i+1]){
-            
-            i++;
-            
-        }
-       
-        dfs(nums, i +1, copy);
+     
         
     }
 }
