@@ -11,31 +11,35 @@ class Solution {
     }
     
     
+    
     public void dfs(int[] candidates, int i, int target, List<Integer> list){
         
-    
-        
-
         if(target == 0){
             combs.add(new ArrayList<>(list));
             return;
         }
         
-        for(int j = i; j < candidates.length; j++){
-            
-            if(j!= i && candidates[j] == candidates[j-1]){
-                continue;
-            }
-            if(candidates[j] > target){
-                break;
-            }
-            
-            list.add(candidates[j]);
-            dfs(candidates, j+1, target - candidates[j],  list);
-            list.remove(list.size()-1);
-        
-            
+        if(target < 0){
+            return;
         }
+        
+        if(i >= candidates.length){
+            return;
+        }
+
+        
+        List<Integer> copy = new ArrayList<>(list);
+        copy.add(candidates[i]);
+        dfs(candidates, i+1, target - candidates[i], copy);
+        
+        
+        while(i < candidates.length -1 && candidates[i] == candidates[i+1]){
+            i++;
+        }
+        copy.remove(copy.size()-1);
+        //backtracking
+        dfs(candidates, i+1,target, copy);
+
         
         
         
