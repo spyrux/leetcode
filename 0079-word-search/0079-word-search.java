@@ -2,10 +2,10 @@ class Solution {
     boolean exists = false;
     
     public boolean exist(char[][] board, String word) {
-        
+        int[][] seen = new int[board.length][board[0].length];
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
-                int[][] seen = new int[board.length][board[0].length];
+                
                 dfs(board, word, i, j, 0, seen);
             }
         }
@@ -33,6 +33,7 @@ class Solution {
         dfs(board, word, x, y-1, index+1, seen);
         dfs(board, word, x-1, y, index+1, seen);
         seen[x][y] = 0;
+        
     }
         
        
