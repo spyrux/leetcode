@@ -1,42 +1,42 @@
 class Solution {
+    
+    List<List<Integer>> combs;
+   
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> results = new ArrayList<List<Integer>>();
-        
-        if(candidates == null|| candidates.length == 0){
-            return results;
-        }
-        
-        List<Integer> sum = new ArrayList<>();
+        combs = new ArrayList<>();
         Arrays.sort(candidates);
-        combinationSumHelper(candidates, results, sum, target, 0);
+        dfs(candidates, 0,  target, new ArrayList<>());
+        return combs;
         
-        
-        
-        return results;
     }
     
     
-    
-    public void combinationSumHelper(int[] candidates, List<List<Integer>> results, List<Integer> sum, int target, int start){
+    public void dfs(int[] candidates, int i, int target, List<Integer> list){
         
+    
+        
+
         if(target == 0){
-            results.add(new ArrayList<>(sum));
+            combs.add(new ArrayList<>(list));
             return;
         }
         
-        for(int i = start; i < candidates.length; i++){
-            if(i!=start && candidates[i] == candidates[i-1]){
+        for(int j = i; j < candidates.length; j++){
+            
+            if(j!= i && candidates[j] == candidates[j-1]){
                 continue;
             }
-            
-            if(candidates[i] > target){
+            if(candidates[j] > target){
                 break;
             }
             
-            sum.add(candidates[i]);        
-            combinationSumHelper(candidates, results, sum, target - candidates[i], i + 1);
-            sum.remove(sum.size()-1);
+            list.add(candidates[j]);
+            dfs(candidates, j+1, target - candidates[j],  list);
+            list.remove(list.size()-1);
+        
+            
         }
+        
         
         
         
