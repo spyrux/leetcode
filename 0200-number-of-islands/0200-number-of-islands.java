@@ -31,15 +31,12 @@ class Solution {
     public void dfs(char[][] grid, char[][] seen, int x, int y){
         
         
-        if(x >= grid.length || y >= grid[0].length || x < 0 || y < 0 ){
+        if(x >= grid.length || y >= grid[0].length || x < 0 || y < 0 ||grid[x][y] == '0' || seen[x][y] == '*'){
             return; 
         }
         
         
-        if(grid[x][y] == '0' || seen[x][y] == '*'){
-            return; 
-        }
-       
+        
         
         
        
