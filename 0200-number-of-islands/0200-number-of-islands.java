@@ -1,58 +1,41 @@
 class Solution {
-    
-    
-    // it is an island when surrounded by edge or 0's 
-    
-    
-    
-    
-    
     public int numIslands(char[][] grid) {
-        
-        int num = 0;
-        
-        for(int i = 0; i < grid.length;i++){
+        // in order for a 1 to be an island has to be surrounded by 0's 
+        if(grid == null || grid.length == 0){
+            return 0;
+        }
+        int numIslands = 0;
+        for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[0].length;j++){
-                
-                if(grid[i][j] == '1' ){
+                if(grid[i][j] == '1'){
                     dfs(grid, i, j);
-                    num++;
+                    numIslands += 1;
                 }
-               
             }
         }
-        
-        
-        
-        return num;
+        return numIslands; 
     }
     
     
-    public void dfs(char[][] grid, int x, int y){
-        
-        
-        if(x >= grid.length || y >= grid[0].length || x < 0 || y < 0 ||grid[x][y] == '0' || grid[x][y] == '2'){
-            return; 
+    
+    
+    
+    public void dfs(char[][] grid, int i, int j){
+        if(i < 0||i >= grid.length|| j < 0 || j >= grid[i].length|| grid[i][j] == '0'|| grid[i][j] == '2'  ){
+            return ;
+        } 
+        grid[i][j] = '2';
+        dfs(grid, i+1, j);
+        dfs(grid, i-1, j);
+        dfs(grid, i, j+1);
+        dfs(grid, i, j-1);
+  
         }
         
         
-        
-        
-        
-       
-        grid[x][y] = '2';
-        
-        
-        dfs(grid, x+1, y);
-        dfs(grid, x-1, y);
-        dfs(grid, x, y+1);
-        dfs(grid, x, y-1);
-        
-        
-        
-        
-    }
-    
     
     
 }
+
+
+
