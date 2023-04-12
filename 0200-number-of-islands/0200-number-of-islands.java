@@ -4,12 +4,12 @@ class Solution {
     // it is an island when surrounded by edge or 0's 
     
     
-    int num = 0;
+    
     
     
     public int numIslands(char[][] grid) {
         
-        
+        int num = 0;
         
         for(int i = 0; i < grid.length;i++){
             for(int j = 0; j < grid[0].length;j++){
