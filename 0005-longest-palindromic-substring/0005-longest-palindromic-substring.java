@@ -1,44 +1,32 @@
 class Solution {
-    
-    String longest = "";
-    
     public String longestPalindrome(String s) {
-        if(isPalindromic(s)){
-            return s;
-        }
-        for(int i = 0; i < s.length(); i++){
-            dfs(s, i , i+1);
-        }
-        
-        
-        
-        return longest;
-        
-    }
-    
-    public boolean isPalindromic(String s){
-        
-        int low = 0;
-        int high = s.length()-1;
-        
-        while(low <= high){
-            if(s.charAt(low)!= s.charAt(high)){
-                return false;
+        int length = s.length();
+        boolean[][] pal = new boolean[length][length];
+        int left = 0, right = 0, max = 0;
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j <= i; j++){
+                
+                if(i == j){
+                    pal[j][i] = true;
+                }else if(s.charAt(i) == s.charAt(j)){
+                    if(i-j == 1){
+                        pal[j][i] = true;
+                    }else{
+                        pal[j][i] = pal[j+1][i-1];
+                    }
+                    
+                }
+                
+                if(pal[j][i]){
+                    if(i-j+1 > max){
+                        max = i-j+1;
+                        left = j;
+                        right = i+1;
+                    }
+                }
+                
             }
-            
-            high--;
-            low++;
         }
-        return true;
-    }
-    
-    public void dfs(String s, int start, int end){
-        if(end > s.length()){
-            return;
-        }
-        if(isPalindromic(s.substring(start, end)) && s.substring(start, end).length() > longest.length()){
-            longest = s.substring(start, end);
-        }
-        dfs(s, start, end+1);
+        return s.substring(left, right);
     }
 }
