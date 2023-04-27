@@ -8,13 +8,17 @@ class Solution {
                 
                 if(i == j){
                     pal[j][i] = true;
-                }else if(s.charAt(i) == s.charAt(j)){
-                    if(i-j == 1){
-                        pal[j][i] = true;
+                }else {
+                    if(s.charAt(i) == s.charAt(j)){
+                        if(i-j == 1){
+                            pal[j][i] = true;
+                        }else{
+                            pal[j][i] = pal[j+1][i-1];
+                        }
                     }else{
-                        pal[j][i] = pal[j+1][i-1];
+                        pal[j][i] = false;
                     }
-                    
+
                 }
                 
                 if(pal[j][i]){
