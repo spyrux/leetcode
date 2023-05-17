@@ -7,11 +7,10 @@ class Solution {
         }
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>(list);
         
-        int pop = pq.size() - k;
         
-        while(pop > 0){
+        
+        while(pq.size()> k){
             pq.poll();
-            pop--;
         }
         
         return pq.poll();
