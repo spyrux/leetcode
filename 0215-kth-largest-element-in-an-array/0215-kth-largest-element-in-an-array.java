@@ -10,8 +10,8 @@ class Solution {
         int p = r;
         int pointer = l;
         
-        for (int i = l; i < r; i++) {
-            if (nums[i] <= nums[p]) {
+        for (int i = l; i <= r; i++) {
+            if (nums[i] < nums[p]) {
                 swap(nums, pointer, i);
                 pointer++;
                 
