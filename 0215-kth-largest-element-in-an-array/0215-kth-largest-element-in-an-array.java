@@ -5,12 +5,7 @@ class Solution {
     }
     
     public int quickSelect(int[] nums, int l, int r, int k) {
-        if(l > r){
-            return Integer.MAX_VALUE;
-        }
-        if (l == r) {
-            return nums[l];
-        }
+
         
         int p = r;
         int pointer = l;
