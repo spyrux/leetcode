@@ -3,40 +3,30 @@ class Solution {
     
     public int longestCommonSubsequence(String text1, String text2) {
         
-        Integer[][] grid = new Integer[text1.length()][text2.length()];
+        int[][] grid = new int[text1.length()+1][text2.length()+1];
         
-       
-        
-        return  dfs(text1, text2, 0,0, grid);
+        for(int i = 1; i < grid.length; i++){
+            for(int j = 1; j < grid[0].length; j++){
+                
+                
+    
+                
+                
+               
+                if(text1.charAt(i-1) == text2.charAt(j-1)){
+                    
+                    grid[i][j] = grid[i-1][j-1] + 1;
+                    
+                }else{
+                    grid[i][j] = Math.max(grid[i-1][j], grid[i][j-1]);
+                }
+                
+               
+            }
+        }
+        return grid[text1.length()][text2.length()];
     }
     
     
-    public int dfs(String text1, String text2, int index1, int index2, Integer[][] grid){
-        
-       
-        if(index1 >= text1.length() ||index2 >= text2.length() ){
-            return 0;
-        }
-        if(grid[index1][index2]!= null){
-            return grid[index1][index2];
-        }
-        
-        
-        if(text1.charAt(index1) == text2.charAt(index2)){
-           grid[index1][index2] = 1+ dfs(text1, text2, index1+1, index2+1, grid);
-           
-            return grid[index1][index2];
-            
-        }else{
-            
-           grid[index1][index2] =  Math.max(dfs(text1, text2, index1+1, index2, grid),
-                           dfs(text1, text2, index1, index2+1, grid));
-            return grid[index1][index2];
-        }
-        
-       
-        
-        
-        
-    }
+    
 }
