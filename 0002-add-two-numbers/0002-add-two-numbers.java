@@ -118,7 +118,8 @@ class Solution {
         
         pointer = sum.next;
         boolean carry = false;
-        while(pointer !=null || carry){
+        while(pointer.next != null || carry || pointer.val >= 10){
+            
             if(carry){
                 pointer.val++;
                 carry = false;
@@ -128,11 +129,17 @@ class Solution {
                 pointer.val = pointer.val%10;
             }
             
-            if(pointer.next == null && carry){
-                pointer.next = new ListNode(1);
-                carry = false;
-            }
-            pointer = pointer.next;
+            if(pointer.next == null){
+                if(carry){
+                    pointer.next = new ListNode(1);
+                    carry = false; 
+                }
+                
+            }else{
+                    pointer = pointer.next;
+                }
+
+            
         }
         
         
