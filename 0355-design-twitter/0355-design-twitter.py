@@ -33,7 +33,7 @@ class Twitter:
                 if followId in self.tweets:
                     heap.append(self.tweets[followId])
 
-        heap = [h for h in heap if h is not None]  # Remove None values from heap list
+          # Remove None values from heap list
 
         if heap:
             heap = list(heapq.merge(*heap))
