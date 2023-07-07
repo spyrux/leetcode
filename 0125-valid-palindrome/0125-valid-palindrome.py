@@ -9,8 +9,7 @@ class Solution:
             
             if (a[right].isalpha() or a[right].isnumeric()) and (a[left].isalpha() or a[left].isnumeric()):
                 if a[right] != a[left]:
-                    print(a[left])
-                    print(a[right])
+                    
                     return False
                 else:
                     right-=1
