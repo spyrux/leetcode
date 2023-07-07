@@ -16,10 +16,10 @@ class Solution:
                     left+=1
             
             
-            if not s[left].isalnum():
+            elif not s[left].isalnum():
                 left+=1
             
-            if not s[right].isalnum():
+            else:
                 right-=1
             
             
