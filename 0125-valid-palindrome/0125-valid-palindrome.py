@@ -9,8 +9,7 @@ class Solution:
             
             if a[right].isalnum() and a[left].isalnum():
                 if a[right] != a[left]:
-                    print(a[left])
-                    print(a[right])
+                   
                     return False
                 else:
                     right-=1
