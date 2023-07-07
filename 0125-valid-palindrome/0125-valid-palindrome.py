@@ -3,23 +3,24 @@ class Solution:
         
         left = 0
         right = len(s) -1 
-
+        a = s.lower()
         
         while(left < right):
             
-            if s[right].isalnum() and s[left].isalnum():
-                if s[right].lower() != s[left].lower():
-                    
+            if a[right].isalnum() and a[left].isalnum():
+                if a[right] != a[left]:
+                    print(a[left])
+                    print(a[right])
                     return False
                 else:
                     right-=1
                     left+=1
             
             
-            elif not s[left].isalnum():
+            if not a[left].isalnum():
                 left+=1
             
-            else:
+            if not a[right].isalnum():
                 right-=1
             
             
