@@ -3,12 +3,12 @@ class Solution:
         
         left = 0
         right = len(s) -1 
-        a = s.lower()
+
         
         while(left < right):
             
-            if (a[right].isalpha() or a[right].isnumeric()) and (a[left].isalpha() or a[left].isnumeric()):
-                if a[right] != a[left]:
+            if (s[right].isalpha() or s[right].isnumeric()) and (s[left].isalpha() or s[left].isnumeric()):
+                if s[right].lower() != s[left].lower():
                     
                     return False
                 else:
@@ -16,10 +16,10 @@ class Solution:
                     left+=1
             
             
-            if not (a[left].isalpha() or a[left].isnumeric()):
+            if not (s[left].isalpha() or s[left].isnumeric()):
                 left+=1
             
-            if not (a[right].isalpha() or a[right].isnumeric()):
+            if not (s[right].isalpha() or s[right].isnumeric()):
                 right-=1
             
             
