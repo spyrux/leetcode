@@ -7,7 +7,7 @@ class Solution:
         
         while(left < right):
             
-            if (s[right].isalpha() or s[right].isnumeric()) and (s[left].isalpha() or s[left].isnumeric()):
+            if s[right].isalnum() and s[left].isalnum():
                 if s[right].lower() != s[left].lower():
                     
                     return False
@@ -16,10 +16,10 @@ class Solution:
                     left+=1
             
             
-            if not (s[left].isalpha() or s[left].isnumeric()):
+            if not s[left].isalnum():
                 left+=1
             
-            if not (s[right].isalpha() or s[right].isnumeric()):
+            if not s[right].isalnum():
                 right-=1
             
             
