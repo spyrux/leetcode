@@ -8,12 +8,19 @@ class Solution(object):
         
         left = 0
         right = len(nums)-1
-        
-        while left <= right:
+        if nums[left]== target:
+            return left
+        if nums[right] == target:
+            return right
+        while left < right:
             mid = (left+right)/2
             
             if(nums[mid] == target):
                 return mid
+            elif nums[left] == target:
+                return left
+            elif nums[right] == target:
+                return right
             elif nums[mid] > target:
                 right = mid -1
             else:
@@ -22,7 +29,7 @@ class Solution(object):
             
         
         
-        
+        3
         
         
         return -1
