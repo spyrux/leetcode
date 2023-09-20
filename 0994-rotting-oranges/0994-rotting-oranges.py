@@ -35,6 +35,7 @@ class Solution:
             if grid[node[1]][node[2]] == 2 or grid[node[1]][node[2]] == 1:   
                 print(node[1],node[2])
                 grid[node[1]][node[2]] = 2  
+                seen+=1
                 minute = max(minute, node[0])
             
                 
@@ -58,10 +59,6 @@ class Solution:
                 
         
         
-        seen = 0
-        for (i, j) in product(range(self.m),range(self.n)):
-            if grid[i][j] == 2:
-                seen+=1
        
         if total == seen:
             return minute
