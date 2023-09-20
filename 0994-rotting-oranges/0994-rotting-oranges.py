@@ -33,7 +33,7 @@ class Solution:
             visited.add((node[1],node[2]))
            
             if grid[node[1]][node[2]] == 2 or grid[node[1]][node[2]] == 1:   
-                print(node[1],node[2])
+
                 grid[node[1]][node[2]] = 2  
                 seen+=1
                 minute = max(minute, node[0])
