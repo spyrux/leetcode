@@ -44,7 +44,7 @@ class Solution:
         pset.add((i,j))
         trav_list = [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]
         
-        print("p=",i, j)
+      
         self.Ppaths[i][j] = 1
         
         for a in trav_list:
@@ -60,7 +60,7 @@ class Solution:
         
         aset.add((i,j))
         trav_list = [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]
-        print("a=", i, j)
+        
         self.Apaths[i][j] = 1
         
         for a in trav_list:
