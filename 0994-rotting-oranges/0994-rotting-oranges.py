@@ -11,7 +11,7 @@ class Solution:
         minute = 0
         self.m , self.n = len(grid), len(grid[0])
         
-        rotten = []
+
         
         for (i, j) in product(range(self.m),range(self.n)):
             if grid[i][j] == 1 or grid[i][j] == 2:
