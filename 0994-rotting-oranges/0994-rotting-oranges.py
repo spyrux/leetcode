@@ -17,10 +17,8 @@ class Solution:
             if grid[i][j] == 1 or grid[i][j] == 2:
                 total+=1
             if grid[i][j] == 2:
-                rotten.append((i,j))
+                q.append((0, i, j))
 
-        for i in rotten:
-            q.append((0, i[0], i[1]))
             
             
         while len(q) != 0:
