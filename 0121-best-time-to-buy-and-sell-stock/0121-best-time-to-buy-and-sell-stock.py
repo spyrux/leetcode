@@ -11,6 +11,6 @@ class Solution:
             else:
                 if prices[i] > prices[currSell]:
                     currSell = i
-                    profit = max(profit, prices[currSell]-prices[currBuy])
+                    
         
-        return profit
+        return max(profit, prices[currSell]-prices[currBuy])
