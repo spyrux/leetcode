@@ -11,7 +11,7 @@ class Solution:
                 #have to minimize the search space if it si bigger then it has to be the one on its left
                 #if i leave without +1 it will infinitely loop at 2 elements
                 left = mid +1
-            elif nums[mid] < nums[right]:
+            else:
                 right = mid
             
         
