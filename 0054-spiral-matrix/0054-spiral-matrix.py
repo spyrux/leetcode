@@ -8,7 +8,7 @@ class Solution:
         return order
     
     def spiral(self, dirCounter, i, j, order:List[int], visited:List[List[int]], matrix:List[List[int]]):
-        if i < 0 or j < 0 or i >= len(matrix) or j >= len(matrix[0]) or visited[i][j]:
+        if i < 0 or j < 0 or i >= len(matrix) or j >= len(matrix[0]) or visited[i][j]==1:
             return
 
         order.append(matrix[i][j])
